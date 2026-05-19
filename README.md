@@ -1,4 +1,34 @@
-#desktop-audio-visualizer
-基于codex制作的简易程序--用于练习
-使用deepseek api接入codex
+﻿# 桌面音频可视化器
 
+实时捕获系统音频输出，在桌面生成悬浮频谱动画。
+
+## 功能
+
+- 系统音频实时捕获，频谱随声音跳动
+- 4 种可视化样式 + 5 套配色，`S` / `T` 切换
+- 透明悬浮窗，可拖动、置顶、鼠标穿透
+- 系统托盘常驻，`Ctrl+Shift+Q` 退出
+
+## 快捷键
+
+| 按键 | 功能 |
+|---|---|
+| `S` | 切换样式 |
+| `T` | 切换主题 |
+| `Ctrl+Shift+P` | 鼠标穿透 |
+| `Ctrl+Shift+T` | 窗口置顶 |
+| `Ctrl+Shift+V` | 显示/隐藏 |
+| `Ctrl+Shift+Q` | 退出 |
+
+## 运行
+
+```bash
+npm install
+npm start
+```
+
+或双击 `启动.bat`。
+
+## 关于
+
+此项目完全由 **Codex（DeepSeek-v4-pro）** 在对话中生成。
