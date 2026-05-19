@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>桌面音频可视化</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%; height: 100%;
+    background: transparent;
+    overflow: hidden;
+    user-select: none;
+    -webkit-app-region: drag;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  canvas { display: block; position: absolute; top: 0; left: 0; }
+  #controls { -webkit-app-region: no-drag;
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+    padding: 4px 8px;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(8px);
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 10;
+  }
+  body:hover #controls { -webkit-app-region: no-drag; opacity: 1; }
+  #controls button {
+    width: 26px; height: 26px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.08);
+    color: #ccc;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    padding: 0;
+  }
+  #controls button:hover { background: rgba(255,255,255,0.2); color: #fff; }
+  #controls button.active { background: rgba(255,100,100,0.35); border-color: rgba(255,100,100,0.7); color: #f88; }
+  #status { -webkit-app-region: no-drag;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    color: rgba(255,255,255,0.75);
+    font-size: 13px;
+    pointer-events: auto;
+    z-index: 5;
+    text-align: center;
+    transition: opacity 0.4s;
+    cursor: pointer;
+    padding: 20px;
+  }
+  #status.hidden { opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<canvas id="visualizer"></canvas>
+<div id="status">点击此处获取系统音频权限</div>
+<div id="controls">
+  <button id="btn-style" title="切换样式 (S)">S1</button>
+  <button id="btn-theme" title="切换主题 (T)">🎨</button>
+  <button id="btn-passthrough" title="鼠标穿透 (Ctrl+Shift+P)">⊡</button>
+</div>
+
+<script src="renderer.js"></script>
+</body>
+</html>
+
